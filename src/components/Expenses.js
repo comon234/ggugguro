@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {getExpenses} from "../storage/expense";
+import ExpensesForm from "./ExpenseForm";
 
 class Expenses extends Component {
   render() {
@@ -7,6 +8,7 @@ class Expenses extends Component {
 
     return (
       <div>
+        <ExpensesForm/>
         {Object.keys(expenses).map(key => {
           return expenses[key].map(({date, amount}, i) => (
             <div key={i}>

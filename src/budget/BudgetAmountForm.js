@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {getBudget, setBudget} from "../storage/budget";
 
-class BudgetForm extends Component {
+class BudgetAmountForm extends Component {
   state = {
-    budget: getBudget()
+    budget: getBudget(this.props.date)
   };
 
   setBudgetInput = (e) => {
@@ -16,7 +16,10 @@ class BudgetForm extends Component {
     const {
       budget
     } = this.state;
-    setBudget(budget)
+    const {
+      date
+    } = this.props;
+    setBudget(date, budget)
     alert("설정되었습니다.");
     window.location.reload();
   };
@@ -31,7 +34,7 @@ class BudgetForm extends Component {
         예산 가격
         <input
           type="number"
-          value={budget}
+          value={budget || 0}
           onChange={this.setBudgetInput}
         />
 
@@ -45,4 +48,4 @@ class BudgetForm extends Component {
   }
 }
 
-export default BudgetForm;
+export default BudgetAmountForm;
