@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {addCategory} from "../storage/categories";
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 
 class CategoryForm extends Component {
   state = {
@@ -47,23 +49,23 @@ class CategoryForm extends Component {
     return (
       <div>
         카테고리 추가
-        <input
+        <Input
           type="text"
           value={category}
           onChange={this.setCategoryInput}
           placeholder={'ex: 식비/유흥비'}
         />
-        <input
+        <Input
           type="number"
           onChange={this.setPercentInput}
           value={percent}
           placeholder={'비율(%)'}
         />
-        <button
+        <Button
           onClick={this.addCategory}
         >
           추가
-        </button>
+        </Button>
       </div>
     );
   }

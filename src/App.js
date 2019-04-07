@@ -5,11 +5,11 @@ import AccountBalanceWallet from '@material-ui/icons/AccountBalanceWallet';
 import AttachMoney from '@material-ui/icons/AttachMoney';
 import DoneOutline from '@material-ui/icons/DoneOutline';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import BudgetForm from './budget/BudgetForm';
+import MonthlyBudget from './budget/MonthlyBudget';
 import DailyBudget from './daily/DailyBudget';
-import ExpenseForm from './components/ExpenseForm'
+import ExpenseForm from './expense/ExpenseForm'
 import { withRouter } from "react-router-dom";
-import Expenses from './components/Expenses';
+import Expenses from './expense/Expenses';
 
 class App extends Component {
 
@@ -35,7 +35,7 @@ class App extends Component {
           </Tabs>
         </nav>
       
-        <Route path="/budget" exact component={BudgetForm} />
+        <Route path="/budget" exact component={MonthlyBudget} />
         <Route path="/" exact component={DailyBudget} />
         <Route path="/expense" exact component={Expenses} />
 

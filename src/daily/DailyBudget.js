@@ -12,7 +12,6 @@ const dailyDate = new Date();
 export default function DailyBudget() {
 
   const categories = getCategories();
-  console.log(categories);
   const daysOfMonth = getDate(lastDayOfMonth(dailyDate));
 
   const dailyBudget = Math.round(getBudget(dailyDate) / daysOfMonth);

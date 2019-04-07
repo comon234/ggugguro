@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {deleteCategory, getCategories} from "../storage/categories";
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 
 class Categories extends Component {
   handleDelete = (category) => {
@@ -17,11 +19,11 @@ class Categories extends Component {
           <div key={i}>
             {category} 비율: {percent} &nbsp;
 
-            <button
+            <Button
               onClick={e => this.handleDelete(category)}
             >
               삭제
-            </button>
+            </Button>
           </div>
         ))}
       </div>

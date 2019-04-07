@@ -5,7 +5,7 @@ export const getBudget = (date) => {
     localStorage.setItem('budgetMap', JSON.stringify({}));
   }
   const budgetMap = JSON.parse(localStorage.getItem('budgetMap'));
-  const key = format(date, 'YYYY-DD');
+  const key = format(date, 'YYYY-MM');
   if (budgetMap.hasOwnProperty(key)) {
     return budgetMap[key]
   }
@@ -17,7 +17,7 @@ export const setBudget = (date, budget) => {
     localStorage.setItem('budgetMap', JSON.stringify({}));
   }
   const budgetMap = JSON.parse(localStorage.getItem('budgetMap'));
-  const key = format(date, 'YYYY-DD');
+  const key = format(date, 'YYYY-MM');
   budgetMap[key] = budget;
 
   localStorage.setItem('budgetMap', JSON.stringify(budgetMap));
