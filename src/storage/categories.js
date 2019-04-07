@@ -8,7 +8,7 @@ export const addCategory = (category, percent) => {
   localStorage.setItem('categories', JSON.stringify(categories))
 };
 
-export const deleteCategory = (category) => {
+export const deleteCategory = (c) => {
   const categories = getCategories();
-  localStorage.setItem('categories', JSON.stringify(categories.filter(c => c !== category)))
+  localStorage.setItem('categories', JSON.stringify(categories.filter(({category}) => c !== category)))
 };

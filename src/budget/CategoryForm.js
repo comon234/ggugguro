@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {addCategory} from "../storage/categories";
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 class CategoryForm extends Component {
   state = {
@@ -45,28 +48,39 @@ class CategoryForm extends Component {
       category,
       percent
     } = this.state;
+    const {
+      setCategoryAddmode
+    } = this.props;
 
     return (
-      <div>
-        카테고리 추가
-        <Input
-          type="text"
-          value={category}
-          onChange={this.setCategoryInput}
-          placeholder={'ex: 식비/유흥비'}
-        />
-        <Input
-          type="number"
-          onChange={this.setPercentInput}
-          value={percent}
-          placeholder={'비율(%)'}
-        />
-        <Button
-          onClick={this.addCategory}
-        >
-          추가
-        </Button>
-      </div>
+      <React.Fragment>
+        <DialogTitle id="form-dialog-title">카테고리 추가</DialogTitle>
+          <DialogContent>
+            <TextField
+              autoFocus
+              label="카테고리"
+              type="text"
+              value={category}
+              onChange={this.setCategoryInput}
+              placeholder={'ex: 식비/유흥비'}
+            />
+            <TextField
+              label="비율"
+              type="text"
+              onChange={this.setPercentInput}
+              value={percent}
+              placeholder={'비율(%)'}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={e => setCategoryAddmode(false)} color="primary">
+              취소
+            </Button>
+            <Button onClick={this.addCategory} color="primary">
+              변경
+            </Button>
+          </DialogActions>
+      </React.Fragment>
     );
   }
 }

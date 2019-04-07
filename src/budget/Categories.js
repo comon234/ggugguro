@@ -2,9 +2,20 @@ import React, {Component} from 'react';
 import {deleteCategory, getCategories} from "../storage/categories";
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Fab from '@material-ui/core/Fab';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 
 class Categories extends Component {
   handleDelete = (category) => {
+    if (!window.confirm("삭제하시겠습니까?")) {
+      return
+    }
     deleteCategory(category);
     alert("삭제되었습니다.");
     window.location.reload();
@@ -13,20 +24,34 @@ class Categories extends Component {
   render() {
     const categories = getCategories();
     return (
-      <div>
-        Categories:
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>카테고리 명</TableCell>
+            <TableCell align="right">금액(원)</TableCell>
+            <TableCell align="right">삭제</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
         {categories.map(({category, percent}, i) => (
-          <div key={i}>
-            {category} 비율: {percent} &nbsp;
+          <TableRow key={i}>
+            <TableCell component="th" scope="row">
+              {category}
 
-            <Button
-              onClick={e => this.handleDelete(category)}
-            >
-              삭제
-            </Button>
-          </div>
+            </TableCell>
+            <TableCell align="right">{percent}</TableCell>
+            <TableCell align="right">
+              <IconButton
+                onClick={e => this.handleDelete(category)}
+                aria-label="Delete" 
+              >
+                <DeleteIcon/>
+              </IconButton>
+            </TableCell>
+          </TableRow>
         ))}
-      </div>
+        </TableBody>
+      </Table>
     );
   }
 }
