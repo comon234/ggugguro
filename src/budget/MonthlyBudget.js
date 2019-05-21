@@ -9,7 +9,7 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import Button from "@material-ui/core/Button";
-import HomeButton from "@material-ui/core/SvgIcon/SvgIcon";
+import HomeButton from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
 
 const budgetDate = new Date();

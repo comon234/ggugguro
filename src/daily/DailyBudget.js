@@ -8,7 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from "@material-ui/core/Button";
-import HomeButton from "@material-ui/core/SvgIcon/SvgIcon";
+import HomeButton from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
 
 const dailyDate = new Date();
