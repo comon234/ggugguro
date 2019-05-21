@@ -7,6 +7,9 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Button from "@material-ui/core/Button";
+import HomeButton from "@material-ui/core/SvgIcon/SvgIcon";
+import { Link } from "react-router-dom";
 
 const dailyDate = new Date();
 export default function DailyBudget() {
@@ -19,6 +22,11 @@ export default function DailyBudget() {
   
   return (
     <div>
+      <Link to={"/"}>
+        <Button>
+          <HomeButton/>
+        </Button>
+      </Link>
       <h1>오늘의 예산 {dailyBudget}원</h1>
       <Table>
         <TableHead>

@@ -1,13 +1,10 @@
-import React, {Component} from 'react';
-import {deleteCategory, getCategories} from "../storage/categories";
-import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
+import React, { Component } from 'react';
+import { deleteCategory, getCategories } from "../storage/categories";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Fab from '@material-ui/core/Fab';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 

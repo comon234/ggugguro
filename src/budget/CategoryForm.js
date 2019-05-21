@@ -34,7 +34,7 @@ class CategoryForm extends Component {
       category,
       percent
     } = this.state;
-    addCategory(category, percent)
+    addCategory(category, percent);
     this.setState({
       category: '',
       percent: 0

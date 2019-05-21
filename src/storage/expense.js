@@ -16,7 +16,7 @@ export const addExpense = ({
   if (!expenses.hasOwnProperty(category)) {
     expenses[category] = []
   }
-  expenses[category].push({amount, date: format(date, "YYYY-MM-DD")})
+  expenses[category].push({amount, date: format(date, "YYYY-MM-DD")});
 
   localStorage.setItem('expenses', JSON.stringify(expenses))
 

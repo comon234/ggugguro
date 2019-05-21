@@ -1,11 +1,9 @@
-import React, {Component} from 'react';
-import {getBudget, setBudget} from "../storage/budget";
-import Input from '@material-ui/core/Input';
+import React, { Component } from 'react';
+import { getBudget, setBudget } from "../storage/budget";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 class BudgetAmountForm extends Component {
@@ -14,7 +12,7 @@ class BudgetAmountForm extends Component {
   };
 
   setBudgetInput = (e) => {
-    const budget = Number(e.target.value)
+    const budget = Number(e.target.value);
     this.setState({
       budget
     })
@@ -27,7 +25,7 @@ class BudgetAmountForm extends Component {
     const {
       date
     } = this.props;
-    setBudget(date, budget)
+    setBudget(date, budget);
     alert("설정되었습니다.");
     window.location.reload();
   };
