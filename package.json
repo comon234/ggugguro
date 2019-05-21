@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "react-scripts-ts build && gh-pages -d build -r https://github.com/reverse-household-account/reverse-household-account.github.io -b master"
+    "deploy": "react-scripts build && gh-pages -d build -r https://github.com/reverse-household-account/reverse-household-account.github.io -b master"
   },
   "eslintConfig": {
     "extends": "react-app"
