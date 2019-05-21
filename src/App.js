@@ -4,6 +4,7 @@ import MonthlyBudget from './budget/MonthlyBudget';
 import DailyBudget from './daily/DailyBudget';
 import Expenses from './expense/Expenses';
 import Home from "./home/Home";
+import Chart from "./statistics/Chart"
 
 class App extends Component {
   handleChange = (event, value) => {
@@ -18,6 +19,7 @@ class App extends Component {
         <Route path="/budget" exact component={MonthlyBudget} />
         <Route path="/daily" exact component={DailyBudget} />
         <Route path="/expense" exact component={Expenses} />
+        <Route path="/statistics" exact component={Chart} />
 
       </div>
     );

@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { getBudget } from "../storage/budget";
 import { getMonth } from "date-fns";
+import Dock from '@material-ui/icons/Dock';
 
 const budgetDate = new Date();
 const Home = () => {
@@ -29,6 +30,12 @@ const Home = () => {
         <Link to={"/expense"}>
           <Button>
             <DoneOutline/>
+          </Button>
+        </Link>
+
+        <Link to={"/statistics"}>
+          <Button>
+            <Dock/>
           </Button>
         </Link>
       </div>

@@ -25,6 +25,7 @@ const Expenses = () => {
           <HomeButton/>
         </Button>
       </Link>
+      <ExpensesForm></ExpensesForm>
       <Table>
         <TableHead>
           <TableRow>

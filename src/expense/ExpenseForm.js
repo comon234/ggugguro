@@ -83,9 +83,7 @@ class ExpenseForm extends Component {
             </Select>
         </DialogContent>
         <DialogActions>
-            <Button onClick={e => setExpenseAddMode(false)} color="primary">
-              취소
-            </Button>
+            
             <Button onClick={this.handleSubmit} color="primary">
               추가
             </Button>

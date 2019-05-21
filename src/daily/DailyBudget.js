@@ -1,7 +1,7 @@
 import React from 'react'
 import { getCategories } from '../storage/categories';
 import { getBudget } from '../storage/budget';
-import { lastDayOfMonth, getDate } from 'date-fns';
+import { lastDayOfMonth, getDate, getMonth } from 'date-fns';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -27,7 +27,7 @@ export default function DailyBudget() {
           <HomeButton/>
         </Button>
       </Link>
-      <h1>오늘의 예산 {dailyBudget}원</h1>
+      <h1 align="center"> {getMonth(dailyDate)+1}월 {getDate(dailyDate)}일</h1>
       <Table>
         <TableHead>
           <TableRow>

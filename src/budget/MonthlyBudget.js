@@ -27,8 +27,11 @@ export default function BudgetForm() {
           <HomeButton/>
         </Button>
       </Link>
-      <h1>
-        {getMonth(budgetDate)+1}월의 예산 {budget || 0}원
+      <h3>
+        {getMonth(budgetDate)+1}월 예산
+      </h3>
+      <h1 align="right">
+         {budget || 0}원
         <Fab 
           color="secondary" 
           aria-label="Edit"
