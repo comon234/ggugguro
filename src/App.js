@@ -7,10 +7,6 @@ import Home from "./home/Home";
 import Chart from "./statistics/Chart"
 
 class App extends Component {
-  handleChange = (event, value) => {
-    this.props.history.push(value);
-  };
-
   render() {
 
     return (

@@ -2,7 +2,7 @@ export const getCategories = () => {
   return localStorage.hasOwnProperty('categories') ? JSON.parse(localStorage.getItem('categories')) : []
 };
 
-export const addCategory = (category, percent) => {
+export const addCategory = ({category, percent}) => {
   const categories = getCategories();
   categories.push({category, percent});
   localStorage.setItem('categories', JSON.stringify(categories))

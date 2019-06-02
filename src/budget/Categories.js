@@ -25,7 +25,7 @@ class Categories extends Component {
         <TableHead>
           <TableRow>
             <TableCell>카테고리 명</TableCell>
-            <TableCell align="right">금액(원)</TableCell>
+            <TableCell align="right">비율(%)</TableCell>
             <TableCell align="right">삭제</TableCell>
           </TableRow>
         </TableHead>

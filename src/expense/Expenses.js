@@ -1,23 +1,22 @@
-import React, {useState} from 'react';
-import {getExpenses} from "../storage/expense";
-import ExpensesForm from "./ExpenseForm";
+import React, { useState } from 'react';
+import { getExpensesFromDate } from "../storage/expense";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Dialog from '@material-ui/core/Dialog';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import { format, parse } from "date-fns";
 import Button from "@material-ui/core/Button";
 import HomeButton from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
-import ExpenseList from './ExpenseList';
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import ExpenseForm from "./ExpenseForm";
+import { Calendar } from "react-calendar";
 
 const Expenses = () => {
-  const expenses = getExpenses();
-  const [expenseAddMode, setExpenseAddMode] = useState(false);
+  const [date, setDate] = useState(null);
 
   return (
     <div>
@@ -26,51 +25,64 @@ const Expenses = () => {
           <HomeButton/>
         </Button>
       </Link>
-      <ExpensesForm></ExpensesForm>
-      <ExpenseList></ExpenseList>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>카테고리 명</TableCell>
-            <TableCell align="right">금액(원)</TableCell>
-            <TableCell align="right">날짜</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {Object.keys(expenses).map(key => {
-            return expenses[key].map(({date, amount}, i) => (
-              <TableRow key={i}>
-                <TableCell component="th" scope="row">
-                  {key}
-                </TableCell>
-                <TableCell align="right">{amount}</TableCell>
-                <TableCell align="right">{format(parse(date), "MM-DD")}</TableCell>
-              </TableRow>
-            ))
-          })}
-        </TableBody>
-      </Table>
+
+      <DialogTitle id="form-dialog-title" align="center">지출 추가</DialogTitle>
+      <DialogContent align="center">
+        <Calendar
+          onClickDay={(date) => setDate(date)}
+          view={"month"}
+          formatMonthYear={(locale, date) => format(date, 'YYYYMM')}
+          prev2Label={null}
+          next2Label={null}
+        />
+      </DialogContent>
       <Dialog
-          open={expenseAddMode}
-          onClose={e => setExpenseAddMode(false)}
+          open={date !== null}
+          onClose={e => setDate(null)}
           aria-labelledby="form-dialog-title"
         >
-        <ExpensesForm
-          setExpenseAddMode={setExpenseAddMode}
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>카테고리 명</TableCell>
+              <TableCell align="right">금액(원)</TableCell>
+              <TableCell align="right">날짜</TableCell>
+              <TableCell align="right">후회감</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {getExpensesFromDate({date}).map(({category, amount, regret}, i) => {
+              return (
+                <TableRow key={i}>
+                  <TableCell component="th" scope="row">
+                    {category}
+                  </TableCell>
+                  <TableCell align="right">{amount}</TableCell>
+                  <TableCell align="right">{format(parse(date), "MM-DD")}</TableCell>
+                  <TableCell align="right">{regret || "0"}</TableCell>
+                </TableRow>
+              )
+            })}
+          </TableBody>
+        </Table>
+        <ExpenseForm
+          date={date}
+          setDate={setDate}
         />
+
       </Dialog>
-      <Fab
-        color="primary"
-        aria-label="Add" 
-        onClick={e => setExpenseAddMode(true)}
-        style={{
-          position: 'absolute',
-          bottom: 40,
-          right: 40,
-        }}
-      >
-        <AddIcon />
-      </Fab>
+      {/*<Fab*/}
+      {/*  color="primary"*/}
+      {/*  aria-label="Add" */}
+      {/*  onClick={e => setExpenseAddMode(true)}*/}
+      {/*  style={{*/}
+      {/*    position: 'absolute',*/}
+      {/*    bottom: 40,*/}
+      {/*    right: 40,*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  <AddIcon />*/}
+      {/*</Fab>*/}
     </div>
   );
 };

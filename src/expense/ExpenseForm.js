@@ -1,98 +1,91 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import DialogActions from "@material-ui/core/DialogActions";
+import Button from "@material-ui/core/Button";
 import { getCategories } from "../storage/categories";
-import { Calendar } from "react-calendar";
-import { format, startOfToday } from "date-fns"
 import { addExpense } from "../storage/expense";
-import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import ExpenseList from './ExpenseList';
+import AddIcon from '@material-ui/icons/Add';
 
-class ExpenseForm extends Component {
-  state = {
-    amount: 0,
-    category: getCategories().length > 0 && getCategories()[0].category || null,
-    date: startOfToday(new Date())
-  };
+const ExpenseForm = ({
+  date,
+  setDate
+}) => {
 
-  setExpenseInput = (e) => {
-    this.setState({
-      amount: Number(e.target.value)
-    })
-  };
+  const categories = getCategories();
+  const [category, setCategory] = useState(null)
+  const [amount, setAmount] = useState(0);
+  const [regret, setRegret] = useState(0);
+  const [on, setOn] = useState(false);
 
-  setDateChange = (date) => {
-    return this.setState({date});
-  };
-
-  setCategory = (e) => {
-    if (!e.target.value) {
-      return;
-    }
-
-    this.setState({
-      category: e.target.value
-    })
-  };
-
-  handleSubmit = () => {
-    addExpense(this.state);
-    alert("추가되었습니다.");
+  const handleSubmit = () => {
+    addExpense({
+      date, category, amount, regret
+    });
+    setDate(null);
     window.location.reload();
   };
 
-  render() {
-    const {
-      amount,
-      category
-    } = this.state;
-    const {
-      setExpenseAddMode
-    } = this.props;
-    const categories = getCategories();
+  useEffect(() => {
+    if (categories.length > 0) {
+      setCategory(categories[0].category)
+    }
+  }, []);
+
+  if (!on) {
     return (
-      <React.Fragment>
-        <DialogTitle id="form-dialog-title" align="center">지출 추가</DialogTitle>
-        <DialogContent align="center">
-          <Calendar
-            onClickDay={(value) => ExpenseList('Clicked day:', value)}
-            onChange={this.setDateChange}
-            value={this.state.date}
-            view={"month"}
-            formatMonthYear={(locale, date) => format(date, 'YYYYMM')}
-            prev2Label={null}
-            next2Label={null}
-          />
-            <TextField
-              autoFocus
-              label="지출 비용(원)"
-              type="number"
-              value={amount}
-              onChange={this.setExpenseInput}
-              style={{width: "50%"}}
-            />
-            <Select
-              onChange={this.setCategory}
-              value={category || ''}
-            >
-              {categories.map(({category}, i) => (
-                <MenuItem key={i} value={category}>{category}</MenuItem>
-              ))}
-            </Select>
-        </DialogContent>
-        <DialogActions>
-            
-            <Button onClick={this.handleSubmit} color="primary">
-              추가
-            </Button>
-          </DialogActions>
-      </React.Fragment>
-    );
+      <div>
+        <Button onClick={() => setOn(true)}>
+          <AddIcon/>
+        </Button>
+      </div>
+    )
   }
-}
+
+  return (
+    <React.Fragment>
+      <DialogTitle id="form-dialog-title" align="center">지출 추가</DialogTitle>
+      <DialogContent align="center">
+        <TextField
+          autoFocus
+          label="지출 비용(원)"
+          type="number"
+          value={amount}
+          onChange={e => setAmount(e.target.value *1)}
+          style={{width: "50%"}}
+        />
+        <Select
+          onChange={e => setCategory(e.target.value)}
+          value={category || ''}
+        >
+          {categories.map(({category}, i) => (
+            <MenuItem key={i} value={category}>{category}</MenuItem>
+          ))}
+        </Select>
+        <Select
+          onChange={e => setRegret(e.target.value)}
+          value={`${regret}`}
+        >
+          {
+            ["0","1","2","3","4","5","6","7","8","9","10"].map((value, i) => {
+              return (
+                <MenuItem key={i} value={value}>{value}</MenuItem>
+              )
+            })
+          }
+
+        </Select>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleSubmit} color="primary">
+          추가
+        </Button>
+      </DialogActions>
+    </React.Fragment>
+  );
+};
 
 export default ExpenseForm;
