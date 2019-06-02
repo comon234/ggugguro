@@ -13,6 +13,7 @@ import { format, parse } from "date-fns";
 import Button from "@material-ui/core/Button";
 import HomeButton from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
+import ExpenseList from './ExpenseList';
 
 const Expenses = () => {
   const expenses = getExpenses();
@@ -26,6 +27,7 @@ const Expenses = () => {
         </Button>
       </Link>
       <ExpensesForm></ExpensesForm>
+      <ExpenseList></ExpenseList>
       <Table>
         <TableHead>
           <TableRow>

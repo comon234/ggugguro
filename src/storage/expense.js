@@ -21,3 +21,15 @@ export const addExpense = ({
   localStorage.setItem('expenses', JSON.stringify(expenses))
 
 };
+
+export const totalExpense = () =>{
+  const expenses = getExpenses();
+  expenses.map(({category})=>{
+    for(const value of expenses){
+
+    const totalExpense = 0;
+    totalExpense = expenses[category].amount + totalExpense;
+  }
+  })
+  
+};

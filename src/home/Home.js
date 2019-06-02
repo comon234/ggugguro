@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { getBudget } from "../storage/budget";
 import { getMonth } from "date-fns";
-import Dock from '@material-ui/icons/Dock';
+import Poll from '@material-ui/icons/Poll';
 
 const budgetDate = new Date();
 const Home = () => {
@@ -35,7 +35,7 @@ const Home = () => {
 
         <Link to={"/statistics"}>
           <Button>
-            <Dock/>
+            <Poll/>
           </Button>
         </Link>
       </div>

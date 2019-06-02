@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import ExpenseList from './ExpenseList';
 
 class ExpenseForm extends Component {
   state = {
@@ -55,9 +56,10 @@ class ExpenseForm extends Component {
     const categories = getCategories();
     return (
       <React.Fragment>
-        <DialogTitle id="form-dialog-title">지출 추가</DialogTitle>
-        <DialogContent>
+        <DialogTitle id="form-dialog-title" align="center">지출 추가</DialogTitle>
+        <DialogContent align="center">
           <Calendar
+            onClickDay={(value) => ExpenseList('Clicked day:', value)}
             onChange={this.setDateChange}
             value={this.state.date}
             view={"month"}
