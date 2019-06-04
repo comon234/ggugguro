@@ -1,4 +1,5 @@
-import {format} from "date-fns"
+import {format} from "date-fns";
+import {getCategories} from "../storage/categories";
 
 export const getExpenses = () => {
   if (!localStorage.hasOwnProperty('expenses')) {
@@ -18,8 +19,7 @@ export const getExpensesFromDate = ({
   }
   return expenses[month][day]
 };
-
- /*
+/*
   * 파라미터
   * amount: 금액
   * category: 카테고리
@@ -54,6 +54,8 @@ export const getExpensesFromDate = ({
   }
   */
 
+ 
+
 export const addExpense = ({
   amount,
   category,
@@ -81,14 +83,73 @@ export const addExpense = ({
   localStorage.setItem('expenses', JSON.stringify(expenses))
 };
 
-// export const totalExpense = () =>{
-//   const expenses = getExpenses();
-//   expenses.map(({category})=>{
-//     for(const value of expenses){
-//
-//     const totalExpense = 0;
-//     totalExpense = expenses[category].amount + totalExpense;
-//   }
-//   })
-//
-// };
+export const totalExpenses = ()=>{
+  const expenses = getExpenses();
+  var resultArr = [];
+
+  for(const month in expenses){//month 2018-03 2018-04
+    for(const day in expenses[month]){//01,02,03
+    for(var i = 0; i < expenses[month][day].length; i++){ //01 : [{},{}]
+     var idx = getKeyIndex(resultArr, expenses[month][day][i]);
+     if(idx > -1){
+        resultArr[idx].amount = Number(resultArr[idx].amount)+ Number(expenses[month][day][i].amount); 
+        }else{
+        resultArr.push(expenses[month][day][i]); 
+     }
+    }}
+    console.log(resultArr);
+    function getKeyIndex(arr, obj){
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i].category === obj.category){ 
+            return i;  
+        }
+    }
+    
+    return -1;
+    }
+    }
+  const totalExpenses = resultArr.map(function(obj){
+  let rObj = {};
+  rObj[obj.category]  = obj.amount;
+  return rObj;
+  })
+
+  localStorage.setItem('totalExpenses', JSON.stringify(totalExpenses))
+}
+
+export const getTotalExpense = () => {
+  totalExpenses();
+  if (!localStorage.hasOwnProperty('totalExpenses')) {
+    localStorage.setItem('totalExpenses', JSON.stringify({}))
+  }
+  return JSON.parse(localStorage.getItem(('totalExpenses')))
+};
+
+export const presentBudgets = () => {
+  const totalExpenses = getTotalExpense();
+  const categories = getCategories();
+  const presentBudget = totalExpenses.map(function(obj){
+    let rObj = {};
+    const key = Object.keys(obj);
+    console.log(key[0]);
+    for(let i=0; i < key.length; i++){
+        for(let j=0; j< categories.length; j++){
+            if(categories[j].category === key[i]){
+                const Budget = categories[j].catBudget - obj[key];
+                console.log(Budget);
+                rObj[key]  = Budget;
+        }
+      }
+    }
+    return rObj;
+  })
+  localStorage.setItem('presentBudget', JSON.stringify(presentBudget))
+}
+export const getPresentBudget = () => {
+  presentBudgets();
+  if (!localStorage.hasOwnProperty('presentBudget')) {
+    localStorage.setItem('presentBudget', JSON.stringify({}))
+  }
+  return JSON.parse(localStorage.getItem(('presentBudget')))
+};
+

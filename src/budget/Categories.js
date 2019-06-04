@@ -25,18 +25,18 @@ class Categories extends Component {
         <TableHead>
           <TableRow>
             <TableCell>카테고리 명</TableCell>
-            <TableCell align="right">비율(%)</TableCell>
+            <TableCell align="right">금액(원)</TableCell>
             <TableCell align="right">삭제</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-        {categories.map(({category, percent}, i) => (
+        {categories.map(({category, catBudget}, i) => (
           <TableRow key={i}>
             <TableCell component="th" scope="row">
               {category}
 
             </TableCell>
-            <TableCell align="right">{percent}</TableCell>
+            <TableCell align="right">{catBudget}</TableCell>
             <TableCell align="right">
               <IconButton
                 onClick={e => this.handleDelete(category)}
