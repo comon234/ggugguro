@@ -1,6 +1,6 @@
 import React from 'react'
 import { getCategories } from '../storage/categories';
-import { getBudget } from '../storage/budget';
+import { getPresentBudget} from '../storage/expense';
 import { lastDayOfMonth, getDate, getMonth } from 'date-fns';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -16,9 +16,10 @@ export default function DailyBudget() {
 
   const categories = getCategories();
   const daysOfMonth = getDate(lastDayOfMonth(dailyDate));
+  const presentBudget = getPresentBudget();
 
-  const dailyBudget = Math.round(getBudget(dailyDate) / daysOfMonth);
-  
+
+
   
   return (
     <div>
@@ -36,12 +37,12 @@ export default function DailyBudget() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {categories.map(({category, percent}, i) => (
-            <TableRow key={i}>
+          {presentBudget.map((value, i) => (
+            <TableRow key={i}> 
               <TableCell component="th" scope="row">
-                {category}
+                {Object.keys(value)}
               </TableCell>
-              <TableCell align="right">{Math.round(dailyBudget  / 100 * percent)}</TableCell>
+              <TableCell align="right">{Math.round(value[Object.keys(value)]/daysOfMonth)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

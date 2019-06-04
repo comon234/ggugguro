@@ -5,11 +5,16 @@ import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { getBudget } from '../storage/budget';
+
+
+const budgetDate = new Date();
+const budget = getBudget(budgetDate);
 
 class CategoryForm extends Component {
   state = {
     category: '',
-    percent: 0
+    catBudget: 0
   };
 
   setCategoryInput = (e) => {
@@ -18,26 +23,26 @@ class CategoryForm extends Component {
     })
   };
 
-  setPercentInput = (e) => {
-    const percent = Number(e.target.value);
-    if (percent < 0 || percent > 100) {
-      alert("비율은 0에서 100까지 설정할 수 있습니다.");
+  setCatBudgettInput = (e) => {
+    const catBudget = Number(e.target.value);
+    if (catBudget > budget) {
+      alert("카테고리의 예산은 총 예산을 초과할 수 없습니다.");
       return;
     }
     this.setState({
-      percent: percent
+      catBudget: catBudget
     })
   };
 
   addCategory = () => {
     const {
       category,
-      percent
+      catBudget
     } = this.state;
-    addCategory({category, percent});
+    addCategory({category, catBudget});
     this.setState({
       category: '',
-      percent: 0
+      catBudget: 0
     });
     alert("설정되었습니다.");
     window.location.reload();
@@ -46,11 +51,13 @@ class CategoryForm extends Component {
   render() {
     const {
       category,
-      percent
+      catBudget
     } = this.state;
     const {
       setCategoryAddmode
     } = this.props;
+
+
 
     return (
       <React.Fragment>
@@ -65,11 +72,11 @@ class CategoryForm extends Component {
               placeholder={'ex: 식비/유흥비'}
             />
             <TextField
-              label="비율"
+              label="카테고리 예산"
               type="text"
-              onChange={this.setPercentInput}
-              value={percent}
-              placeholder={'비율(%)'}
+              onChange={this.setCatBudgettInput}
+              value={catBudget}
+              placeholder={'카테고리 예산(원)'}
             />
           </DialogContent>
           <DialogActions>
