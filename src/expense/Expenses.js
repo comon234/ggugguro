@@ -14,18 +14,23 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import ExpenseForm from "./ExpenseForm";
 import { Calendar } from "react-calendar";
+import Navbar from 'react-bootstrap/Navbar';
 
-const Expenses = () => {
+
+
+
+export default function Expenses() {
   const [date, setDate] = useState(null);
 
   return (
     <div>
-      <Link to={"/"}>
-        <Button>
-          <HomeButton/>
-        </Button>
-      </Link>
-
+      <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <a class="navbar-brand"><Link to={"/"}>
+              <Button>
+                <HomeButton/>
+              </Button>
+            </Link></a>
+      </nav>
       <DialogTitle id="form-dialog-title" align="center">지출 추가</DialogTitle>
       <DialogContent align="center">
         <Calendar
@@ -84,8 +89,5 @@ const Expenses = () => {
       {/*  <AddIcon />*/}
       {/*</Fab>*/}
     </div>
-  );
-};
-
-
-export default Expenses;
+  )
+}

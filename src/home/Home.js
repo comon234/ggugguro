@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { getBudget } from "../storage/budget";
 import { getMonth } from "date-fns";
 import Poll from '@material-ui/icons/Poll';
+import 'bootstrap/dist/css/bootstrap.css'
 
 const budgetDate = new Date();
 const Home = () => {

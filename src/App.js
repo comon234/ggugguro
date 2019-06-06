@@ -5,6 +5,8 @@ import DailyBudget from './daily/DailyBudget';
 import Expenses from './expense/Expenses';
 import Home from "./home/Home";
 import Chart from "./statistics/Chart"
+import 'bootstrap/dist/css/bootstrap.css'
+
 
 class App extends Component {
   render() {
