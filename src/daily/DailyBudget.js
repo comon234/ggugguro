@@ -14,7 +14,6 @@ import { Link } from "react-router-dom";
 const dailyDate = new Date();
 export default function DailyBudget() {
 
-  const categories = getCategories();
   const daysOfMonth = getDate(lastDayOfMonth(dailyDate));
   const presentBudget = getPresentBudget();
 
