@@ -8,6 +8,7 @@ import { getBudget } from "../storage/budget";
 import { getMonth } from "date-fns";
 import Poll from '@material-ui/icons/Poll';
 import 'bootstrap/dist/css/bootstrap.css'
+import Warning from '@material-ui/icons/Warning';
 
 const budgetDate = new Date();
 const Home = () => {
@@ -37,6 +38,12 @@ const Home = () => {
         <Link to={"/statistics"}>
           <Button>
             <Poll/>
+          </Button>
+        </Link>
+
+        <Link to={"/regret"}>
+          <Button>
+            <Warning/>
           </Button>
         </Link>
       </div>

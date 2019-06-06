@@ -50,18 +50,20 @@ export default function Expenses() {
           <TableHead>
             <TableRow>
               <TableCell>카테고리 명</TableCell>
+              <TableCell>내용</TableCell>
               <TableCell align="right">금액(원)</TableCell>
               <TableCell align="right">날짜</TableCell>
               <TableCell align="right">후회감</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {getExpensesFromDate({date}).map(({category, amount, regret}, i) => {
+            {getExpensesFromDate({date}).map(({category, content, amount, regret}, i) => {
               return (
                 <TableRow key={i}>
                   <TableCell component="th" scope="row">
                     {category}
                   </TableCell>
+                  <TableCell align="right">{content}</TableCell>
                   <TableCell align="right">{amount}</TableCell>
                   <TableCell align="right">{format(parse(date), "MM-DD")}</TableCell>
                   <TableCell align="right">{regret || "0"}</TableCell>
