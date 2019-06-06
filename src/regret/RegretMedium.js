@@ -24,17 +24,19 @@ export default function RegretMedium() {
         <TableHead>
           <TableRow>
             <TableCell>카테고리 명</TableCell>
+            <TableCell>내용</TableCell>
             <TableCell >금액(원)</TableCell>
             <TableCell >regret</TableCell>
             <TableCell >날짜(일)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-        {mediumList.map(({category, amount, regret, day}, i) => (
+        {mediumList.map(({category, content, amount, regret, day}, i) => (
           <TableRow key={i}>
             <TableCell component="th" scope="row">
               {category}
             </TableCell>
+            <TableCell >{content}</TableCell>
             <TableCell >{amount}</TableCell>
             <TableCell>{regret}</TableCell>
             <TableCell>{day}</TableCell>

@@ -59,6 +59,7 @@ export const getExpensesFromDate = ({
 export const addExpense = ({
   amount,
   category,
+  content,
   date,
   regret
 }) => {
@@ -76,6 +77,7 @@ export const addExpense = ({
 
   expenses[month][day].push({
     category,
+    content,
     amount,
     regret
   });

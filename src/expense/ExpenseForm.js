@@ -17,13 +17,14 @@ const ExpenseForm = ({
 
   const categories = getCategories();
   const [category, setCategory] = useState(null)
+  const [content, setContent] = useState(null)
   const [amount, setAmount] = useState(0);
   const [regret, setRegret] = useState(0);
   const [on, setOn] = useState(false);
 
   const handleSubmit = () => {
     addExpense({
-      date, category, amount, regret
+      date, category, content, amount, regret
     });
     setDate(null);
     window.location.reload();
@@ -55,6 +56,14 @@ const ExpenseForm = ({
           type="number"
           value={amount}
           onChange={e => setAmount(e.target.value *1)}
+          style={{width: "50%"}}
+        />
+         <TextField
+          autoFocus
+          label="내용"
+          type="string"
+          value={content}
+          onChange={e => setContent(e.target.value)}
           style={{width: "50%"}}
         />
         <Select
