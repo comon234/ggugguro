@@ -85,6 +85,31 @@ export const addExpense = ({
   localStorage.setItem('expenses', JSON.stringify(expenses))
 };
 
+export const deleteExpense = ({
+  date,
+  index
+}) => {
+  const expenses = getExpensesFromDate({date});
+  const newExpenses = expenses.filter((expense, i) => {
+    return i !== index
+  });
+
+  const allExpenses = getExpenses();
+
+  const month = format(date, "YYYY-MM");
+  if (!expenses.hasOwnProperty(month)) {
+    expenses[month] = {}
+  }
+
+  const day = format(date, "DD");
+  if (!expenses[month].hasOwnProperty(day)) {
+    expenses[month][day] = []
+  }
+
+  allExpenses[month][day] = newExpenses;
+  localStorage.setItem('expenses', JSON.stringify(allExpenses))
+};
+
 export const totalExpenses = ()=>{
   const expenses = getExpenses();
   var resultArr = [];
@@ -101,14 +126,14 @@ export const totalExpenses = ()=>{
     }}
     console.log(resultArr);
     function getKeyIndex(arr, obj){
-    for(var i = 0; i < arr.length; i++){
-        if(arr[i].category === obj.category){ 
-            return i;  
-        }
-    }
-    
-    return -1;
-    }
+      for(var i = 0; i < arr.length; i++){
+          if(arr[i].category === obj.category){
+              return i;
+          }
+      }
+
+      return -1;
+      }
     }
   const totalExpenses = resultArr.map(function(obj){
   let rObj = {};

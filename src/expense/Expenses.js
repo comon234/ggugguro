@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getExpensesFromDate } from "../storage/expense";
+import { deleteExpense, getExpensesFromDate } from "../storage/expense";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -18,6 +18,16 @@ import { Calendar } from "react-calendar";
 const Expenses = () => {
   const [date, setDate] = useState(null);
 
+  const handleDelete = ({index, date}) => {
+    const answer = window.confirm("삭제하시겠습니다?");
+
+    if (answer === false) {
+      return;
+    }
+    
+    deleteExpense({index, date});
+    window.location.reload();
+  };
   return (
     <div>
       <Link to={"/"}>
@@ -49,12 +59,13 @@ const Expenses = () => {
               <TableCell align="right">금액(원)</TableCell>
               <TableCell align="right">날짜</TableCell>
               <TableCell align="right">후회감</TableCell>
+              <TableCell align="right">삭제</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {getExpensesFromDate({date}).map(({category, content, amount, regret}, i) => {
+            {getExpensesFromDate({date}).map(({category, content, amount, regret}, index) => {
               return (
-                <TableRow key={i}>
+                <TableRow key={index}>
                   <TableCell component="th" scope="row">
                     {category}
                   </TableCell>
@@ -62,6 +73,7 @@ const Expenses = () => {
                   <TableCell align="right">{amount}</TableCell>
                   <TableCell align="right">{format(parse(date), "MM-DD")}</TableCell>
                   <TableCell align="right">{regret || "0"}</TableCell>
+                  <TableCell align="right"><Button onClick={() => handleDelete({date, index})}>click</Button></TableCell>
                 </TableRow>
               )
             })}

@@ -17,7 +17,7 @@ const ExpenseForm = ({
 
   const categories = getCategories();
   const [category, setCategory] = useState(null)
-  const [content, setContent] = useState(null)
+  const [content, setContent] = useState("")
   const [amount, setAmount] = useState(0);
   const [regret, setRegret] = useState(0);
   const [on, setOn] = useState(false);
