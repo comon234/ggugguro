@@ -1,8 +1,8 @@
 {
-  "name": "reverse-household-account",
+  "name": "ggugguro",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://reverse-household-account.github.io/",
+  "homepage": "https://ggugguro.github.io/",
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "react-scripts build && gh-pages -d build -r https://ggugguro.github.io -b master"
+    "deploy": "react-scripts build && gh-pages -d build -r https://github.com/comon234/ggugguro -b master"
   },
   "eslintConfig": {
     "extends": "react-app"
