@@ -3,28 +3,31 @@ import { Pie } from 'react-chartjs-2';
 import Button from "@material-ui/core/Button";
 import HomeButton from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import { getCategories } from '../storage/categories';
 import { getTotalExpense } from '../storage/expense';
 
-const category = getCategories();
-const totalmoney = getTotalExpense();
+const totalExpenses = getTotalExpense();
+
+const chartList= [];
+const chartValue = [];
+
+for (const i in totalExpenses){
+    const key= Object.keys(totalExpenses[i]); 
+    chartList.push(key[0]);
+    chartValue.push(totalExpenses[i][key])
+    
+}
 
 class chart extends Component{
+    
     constructor(props) {
         super(props);
         this.state={
             chartData:{
-                labels:['식비','잡비','유흥비','교통비'
-                ],
+                labels: chartList,
                 datasets:[
                     {
                     label:'원',
-                    data: [1,2,3,4],
+                    data: chartValue,
                     backgroundColor:[
                         'rgba(255,0,0,0.6)',
                         'rgba(0,255,255,0.6)',
@@ -90,37 +93,7 @@ class chart extends Component{
                         }
                     }}
                 /></center>
-                <center><Link to={"/statistics/a"}>
-                        <Button>
-                            식비   
-                        </Button>
-                        </Link>
-
-                        <Link to={"/statistics/b"}>
-                        <Button>
-                            잡비
-                        </Button>
-                        </Link>
-
-                        <Link to={"/statistics/c"}>
-                        <Button>
-                            유흥비
-                        </Button>
-                        </Link>
-
-                        <Link to={"/statistics/d"}>
-                        <Button>
-                            교통비
-                        </Button>
-                        </Link>
-
-                        {/* <Link to={"e"}>
-                        <Button>
-                            총 지출액
-                        </Button>
-                        </Link>*/}
-                    </center>
-                </div>
+              </div>
             </div>
         )
     }
