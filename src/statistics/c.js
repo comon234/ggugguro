@@ -9,18 +9,18 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { getCategories } from '../storage/categories';
-import { getTotalExpense } from '../storage/expense';
+import { getplayList } from '../storage/chart';
 
-const category = getCategories();
-const totalmoney = getTotalExpense();
+const Categories = getCategories();
+const playList = getplayList();
 
 class chart extends Component{
     constructor(props) {
         super(props);
         this.state={
             chartData:{
-                labels:['식비','잡비','유흥비','교통비'
-                ],
+                labels:['식비', '잡비', '유흥비', '교통비'
+                    ],
                 datasets:[
                     {
                     label:'원',
@@ -114,12 +114,35 @@ class chart extends Component{
                         </Button>
                         </Link>
 
-                        {/* <Link to={"e"}>
+                        <Link to={"e"}>
                         <Button>
-                            총 지출액
+                        총 지출액
                         </Button>
-                        </Link>*/}
+                        </Link>
                     </center>
+                    <h1 align="center">유흥비</h1>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>카테고리 명</TableCell>
+            <TableCell >금액(원)</TableCell>
+            <TableCell >regret</TableCell>
+            <TableCell >날짜(일)</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+        {playList.map(({category, amount, regret, day}, i) => (
+          <TableRow key={i}>
+            <TableCell component="th" scope="row">
+              {category}
+            </TableCell>
+            <TableCell >{amount}</TableCell>
+            <TableCell>{regret}</TableCell>
+            <TableCell>{day}</TableCell>
+          </TableRow>
+        ))}
+        </TableBody>
+      </Table>
                 </div>
             </div>
         )
