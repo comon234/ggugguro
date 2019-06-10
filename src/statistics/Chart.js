@@ -1,66 +1,40 @@
 import React, { Component } from 'react';
-import { Pie } from 'react-chartjs-2';
+import { Pie, Line } from 'react-chartjs-2';
 import Button from "@material-ui/core/Button";
 import HomeButton from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
-import { getTotalExpense } from '../storage/expense';
+import AccountBalanceWallet from '@material-ui/icons/AccountBalanceWallet';
+import AttachMoney from '@material-ui/icons/AttachMoney';
+import DoneOutline from '@material-ui/icons/DoneOutline';
+import Poll from '@material-ui/icons/Poll';
+import Warning from '@material-ui/icons/Warning';
 
-const totalExpenses = getTotalExpense();
 
-const chartList= [];
-const chartValue = [];
-
-for (const i in totalExpenses){
-    const key= Object.keys(totalExpenses[i]); 
-    chartList.push(key[0]);
-    chartValue.push(totalExpenses[i][key])
-    
-}
-
-class chart extends Component{
-    
+class Chart extends Component{
     constructor(props) {
         super(props);
         this.state={
             chartData:{
-                labels: chartList,
-                datasets:[
-                    {
+                labels:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            datasets:[
+                {
                     label:'원',
-                    data: chartValue,
+                    data:[
+                        123000,7000,65000,5000,32400,21938,45892,483,10923,239281,23891,4859
+                    ],
                     backgroundColor:[
-                        'rgba(255,0,0,0.6)',
-                        'rgba(0,255,255,0.6)',
-                        'rgba(0,0,255,0.6)',
-                        'rgba(173,138,156,0.6)',
-                        'rgba(0,0,160,0.6)',
-                        'rgba(128,0,128,0.6)',
-                        'rgba(255,255,0,0.6)',
-                        'rgba(0,255,0,0.6)',
-                        'rgba(255,0,255,0.6)',
-                        'rgba(75,192,112,0.6)',
-                        'rgba(0,0,0,0.6)',
-                        'rgba(120,120,120,0.6)',
-                        'rgba(128,128,128,0.6)',
-                        'rgba(255,165,0,0.6)',
-                        'rgba(165,42,42,0.6)',
-                        'rgba(0,128,0,0.6)',
-                        'rgba(255,0,0,0.6)',
-                        'rgba(0,255,255,0.6)',
-                        'rgba(0,0,255,0.6)',
-                        'rgba(173,138,156,0.6)',
-                        'rgba(0,0,160,0.6)',
-                        'rgba(128,0,128,0.6)',
-                        'rgba(255,255,0,0.6)',
-                        'rgba(0,255,0,0.6)',
-                        'rgba(255,0,255,0.6)',
-                        'rgba(75,192,112,0.6)',
-                        'rgba(0,0,0,0.6)',
-                        'rgba(120,120,120,0.6)',
-                        'rgba(128,128,128,0.6)',
-                        'rgba(255,165,0,0.6)',
-                        'rgba(165,42,42,0.6)',
-                        'rgba(0,128,0,0.6)',
+                        'rgba(255,99,132,0.6)',
+                        'rgba(54,162,235,0.6)',
+                        'rgba(255,206,86,0.6)',
+                        'rgba(75,192,192,0.6)',
+                        'rgba(255,99,132,0.6)',
+                        'rgba(54,162,235,0.6)',
+                        'rgba(22,206,86,0.6)',
+                        'rgba(75,152,192,0.6)',
+                        'rgba(5,99,132,0.6)',
+                        'rgba(54,162,35,0.6)',
+                        'rgba(255,26,86,0.6)',
+                        'rgba(75,192,112,0.6)'
                     ]
                 }
             ]}
@@ -69,22 +43,23 @@ class chart extends Component{
 
     render() {
         return (
-            
             <div>
-            
-                <Link to={"/"}>
-                    <Button>
-                    <HomeButton/>
-                    </Button>
-                </Link>
-                <div className="chart">
-                <center>
-                    <Pie
+        <nav class="navbar navbar-default navbar-expand">
+            <Link to={"/"}>
+                <Button>
+                <HomeButton className="font_white"/>
+                </Button>
+            </Link>
+                <a><h3 className="si_1">통계</h3></a>
+            </nav>
+            <br></br>
+            <div className="chart">
+                <Line
                     data={this.state.chartData}
                     options={{
                         title:{
                             display:true,
-                            text:'카테고리별 통계',
+                            text:'한달 소비 통계',
                             fontSize: 25
                         },
                         legend:{
@@ -92,11 +67,52 @@ class chart extends Component{
                             position:'right'
                         }
                     }}
-                /></center>
-              </div>
+                />
+                <Pie
+                    data={this.state.chartData}
+                    options={{
+                        title:{
+                            display:true,
+                            text:'한달 소비 통계',
+                            fontSize: 25
+                        },
+                        legend:{
+                            display:true,
+                            position:'right'
+                        }
+                    }}
+                />
+                </div>
+        <nav class="navbar fixed-bottom navbar-default">
+          <Link to="/daily">
+              <Button>
+                <AttachMoney className="si_1"/>
+              </Button>
+          </Link>
+          <Link to={"/budget"}>
+            <Button>
+              <AccountBalanceWallet className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/expense" }>
+            <Button>
+              <DoneOutline className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/statistics"}>
+            <Button>
+              <Poll className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/regret"}>
+            <Button>
+              <Warning className="si_1"/>
+            </Button>
+          </Link>
+      </nav>
             </div>
         )
     }
 }
 
-export default chart;
+export default Chart;

@@ -26,7 +26,6 @@ class App extends Component {
         <Route path="/regret/regretHigh" exact component={RegretHigh} />
         <Route path="/regret/regretMedium" exact component={RegretMedium} />
         <Route path="/regret/regretLow" exact component={RegretLow} />
-
       </div>
     );
   }

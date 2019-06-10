@@ -11,6 +11,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import Button from "@material-ui/core/Button";
 import HomeButton from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
+import AccountBalanceWallet from '@material-ui/icons/AccountBalanceWallet';
+import AttachMoney from '@material-ui/icons/AttachMoney';
+import DoneOutline from '@material-ui/icons/DoneOutline';
+import Poll from '@material-ui/icons/Poll';
+import Warning from '@material-ui/icons/Warning';
 
 const budgetDate = new Date();
 export default function BudgetForm() {
@@ -22,15 +27,19 @@ export default function BudgetForm() {
 
   return (
     <div>
+    <nav class="navbar navbar-default navbar-expand">
       <Link to={"/"}>
         <Button>
-          <HomeButton/>
+          <HomeButton className="font_white"/>
         </Button>
       </Link>
-      <h3>
+        <a><h3 className="si_1">예산 설정</h3></a>
+      </nav>
+    <br></br>
+     <h3 className="pad_left">
         {getMonth(budgetDate)+1}월 예산
       </h3>
-      <h1 align="right">
+      <h1 align="right" className="just_font">
          {budget || 0}원
         <Fab 
           color="secondary" 
@@ -73,6 +82,33 @@ export default function BudgetForm() {
           setCategoryAddmode={setCategoryAddmode}
         />
       </Dialog>
-    </div>
+      <nav class="navbar fixed-bottom navbar-default">
+          <Link to="/daily">
+              <Button>
+                <AttachMoney className="si_1"/>
+              </Button>
+          </Link>
+          <Link to={"/budget"}>
+            <Button>
+              <AccountBalanceWallet className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/expense" }>
+            <Button>
+              <DoneOutline className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/statistics"}>
+            <Button>
+              <Poll className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/regret"}>
+            <Button>
+              <Warning className="si_1"/>
+            </Button>
+          </Link>
+      </nav>
+            </div>
   )
 }

@@ -34,14 +34,12 @@ class Categories extends Component {
           <TableRow key={i}>
             <TableCell component="th" scope="row">
               {category}
-
             </TableCell>
-            <TableCell align="right">{catBudget}</TableCell>
+            <TableCell align="right" className="">{catBudget}</TableCell>
             <TableCell align="right">
               <IconButton
                 onClick={e => this.handleDelete(category)}
-                aria-label="Delete" 
-              >
+                aria-label="Delete" >
                 <DeleteIcon/>
               </IconButton>
             </TableCell>

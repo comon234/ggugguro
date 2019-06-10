@@ -1,0 +1,202 @@
+body{
+    background: whitesmoke;
+   }
+   .App {
+     position: relative;
+   }
+   .bot_right{
+     bottom : 5em;
+     padding-right: 20%;
+     padding-bottom: 20%;
+   }
+   .cent_font{
+    font-family: 'Gothic A1', sans-serif;
+    text-align: center;
+   }
+   .just_font{
+    font-family: 'Gothic A1', sans-serif;
+         }
+  .daily_font{
+     padding:5%;
+     font-size: 2em;
+     text-align: center;
+     font-family: 'Gothic A1', sans-serif;
+    }
+   .cont_center{
+    align-content: center;
+    text-align: center;
+    color:white;
+
+   }
+   .back_col{
+    background-color: #5fad46;
+   }
+   .pad_left{
+       padding-left: 7%;
+       font-family: 'Gothic A1', sans-serif;
+            }
+   .padd{
+    padding-top: 5%;
+    padding-bottom: 5%;
+   }
+   .ggrid{
+       color:white;
+       text-align: center;
+       padding-top: 6%;
+       padding-bottom: 2%;
+       align-content: center;
+   }
+   .font_white{
+       color: white;
+   }
+  .navbar-nav{
+      text-align: center;
+      float:none;
+  }
+   .si_1{
+     color:white;
+     text-align: center;
+     align-content: center;
+     padding-top: 20%;
+     font-family: 'Gothic A1', sans-serif;
+     font-size :1.3em;
+               }
+   .budget{
+     padding-left: 10%;
+     padding-top: 5%;
+     font-family: 'Gothic A1', sans-serif;
+           }
+   .plus{
+     padding: 10%;
+   }
+   .pad{
+     font-size: 1.5em;
+     font-family: 'Gothic A1', sans-serif;
+   }
+
+   .home_font{
+     font-size: 2em;
+     text-align: center;
+     color: black;
+     padding-top: 30%;
+     padding-right: 10%;
+     padding-left:10%;
+     padding-bottom: 10%;
+     font-family: 'Gothic A1', sans-serif;
+   }
+   .padd_top{
+     padding-top : 30%;
+   }
+   
+   .navbar-default { 
+     background-color: #5fad46; 
+     align-content: center;
+     padding-top: 2%;
+     padding-bottom: 2%;
+   }
+   .reg_font{
+    color:white;
+    text-align: center;
+    align-content: center;
+    padding-top: 5%;
+    font-family: 'Gothic A1', sans-serif;
+    font-size : 1.3em;
+         }
+   .little_font{
+     font-size : 5em;
+     text-align: center;
+     font-family: 'Gothic A1', sans-serif;
+     color: black;
+   }
+   .table_font{
+    font-size : 0.8em;
+    text-align: center;
+    font-family: 'Gothic A1', sans-serif;
+    color: black;
+  }
+  .cont_font{
+    font-size : 1em;
+    text-align: center;
+    font-family: 'Gothic A1', sans-serif;
+   color: black;
+  }
+  .table2_font{
+    font-size : 1em;
+    text-align: center;
+    font-family: 'Gothic A1', sans-serif;
+     color: black;
+  }
+   .more_little_font{
+     font-size: 3em;
+     text-align : right;
+     font-family: 'Gothic A1', sans-serif;
+     color: black;
+   }
+   .center_font{
+     font-size: 3em;
+     text-align : center;
+     font-family: 'Gothic A1', sans-serif;
+     color: black;
+   }
+   .res-table {
+     width: 100%;
+     margin: 0%;
+     padding: 10%;
+     border-collapse: collapse;
+     border-spacing: 10%;
+   }
+   .si_3{
+     font-size: 120em;
+     size: 120em;
+     color: #5fad46;
+     border: 7px solid #5fad46;
+   }
+   .si_home3{
+     font-size: 120em;
+     size: 500em;
+     color: black;
+     border: 10px solid #5fad46;
+   }
+   .photo{
+     background: url("https://blog.toss.im/wp-content/uploads/2018/07/finances-and-budget_4460x4460-compressor-1170x680.jpg");
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size : cover;
+     opacity: 0.7;
+     margin-top: 10%
+   }
+   .App-logo {
+     animation: App-logo-spin infinite 20s linear;
+     height: 40vmin;
+     pointer-events: none;
+   }
+   .table_p{
+     padding: 10%;
+   }
+   
+   .App-header {
+     opacity: 0.7;
+     background-repeat: no-repeat;
+     margin: 10%;
+     background-position: center;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     font-size: calc(10px + 2vmin);
+     color: white;
+     font-family: 'Gothic A1', sans-serif;
+   }
+   
+   .App-link {
+     color: #61dafb;
+   }
+   
+   @keyframes App-logo-spin {
+     from {
+       transform: rotate(0deg);
+     }
+     to {
+       transform: rotate(360deg);
+     }
+   }
