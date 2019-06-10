@@ -1,5 +1,4 @@
 import React from 'react'
-import { getCategories } from '../storage/categories';
 import { getPresentBudget} from '../storage/expense';
 import { lastDayOfMonth, getDate, getMonth } from 'date-fns';
 import Table from '@material-ui/core/Table';
@@ -10,6 +9,12 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from "@material-ui/core/Button";
 import HomeButton from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
+import AccountBalanceWallet from '@material-ui/icons/AccountBalanceWallet';
+import AttachMoney from '@material-ui/icons/AttachMoney';
+import DoneOutline from '@material-ui/icons/DoneOutline';
+import Poll from '@material-ui/icons/Poll';
+import Warning from '@material-ui/icons/Warning';
+
 
 const dailyDate = new Date();
 export default function DailyBudget() {
@@ -22,12 +27,16 @@ export default function DailyBudget() {
   
   return (
     <div>
+       <nav class="navbar navbar-default navbar-expand">
       <Link to={"/"}>
         <Button>
-          <HomeButton/>
+          <HomeButton className="font_white"/>
         </Button>
       </Link>
-      <h1 align="center"> {getMonth(dailyDate)+1}월 {getDate(dailyDate)}일</h1>
+        <a><h3 className="si_1">오늘의 예산</h3></a>
+      </nav>
+    <br></br>
+          <h1 className="cent_font"> {getMonth(dailyDate)+1}월 {getDate(dailyDate)}일</h1>
       <Table>
         <TableHead>
           <TableRow>
@@ -46,7 +55,33 @@ export default function DailyBudget() {
           ))}
         </TableBody>
       </Table>
-
+      <nav class="navbar fixed-bottom navbar-default">
+          <Link to="/daily">
+              <Button>
+                <AttachMoney className="si_1"/>
+              </Button>
+          </Link>
+          <Link to={"/budget"}>
+            <Button>
+              <AccountBalanceWallet className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/expense" }>
+            <Button>
+              <DoneOutline className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/statistics"}>
+            <Button>
+              <Poll className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/regret"}>
+            <Button>
+              <Warning className="si_1"/>
+            </Button>
+          </Link>
+      </nav>
     </div>
   )
 }

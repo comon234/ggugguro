@@ -14,6 +14,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import ExpenseForm from "./ExpenseForm";
 import { Calendar } from "react-calendar";
+import AccountBalanceWallet from '@material-ui/icons/AccountBalanceWallet';
+import AttachMoney from '@material-ui/icons/AttachMoney';
+import DoneOutline from '@material-ui/icons/DoneOutline';
+import Poll from '@material-ui/icons/Poll';
+import Warning from '@material-ui/icons/Warning';
+
 
 const Expenses = () => {
   const [date, setDate] = useState(null);
@@ -30,12 +36,15 @@ const Expenses = () => {
   };
   return (
     <div>
+            <nav class="navbar navbar-default navbar-expand">
       <Link to={"/"}>
         <Button>
-          <HomeButton/>
+          <HomeButton className="font_white"/>
         </Button>
       </Link>
-
+        <a><h3 className="si_1">지출 추가</h3></a>
+      </nav>
+    <br></br>
       <DialogTitle id="form-dialog-title" align="center">지출 추가</DialogTitle>
       <DialogContent align="center">
         <Calendar
@@ -85,6 +94,33 @@ const Expenses = () => {
         />
 
       </Dialog>
+      <nav class="navbar fixed-bottom navbar-default">
+          <Link to="/daily">
+              <Button>
+                <AttachMoney className="si_1"/>
+              </Button>
+          </Link>
+          <Link to={"/budget"}>
+            <Button>
+              <AccountBalanceWallet className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/expense" }>
+            <Button>
+              <DoneOutline className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/statistics"}>
+            <Button>
+              <Poll className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/regret"}>
+            <Button>
+              <Warning className="si_1"/>
+            </Button>
+          </Link>
+      </nav>
       {/*<Fab*/}
       {/*  color="primary"*/}
       {/*  aria-label="Add" */}
