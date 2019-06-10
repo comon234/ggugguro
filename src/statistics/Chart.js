@@ -4,6 +4,11 @@ import Button from "@material-ui/core/Button";
 import HomeButton from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
 import { getTotalExpense } from '../storage/expense';
+import AccountBalanceWallet from '@material-ui/icons/AccountBalanceWallet';
+import AttachMoney from '@material-ui/icons/AttachMoney';
+import DoneOutline from '@material-ui/icons/DoneOutline';
+import Poll from '@material-ui/icons/Poll';
+import Warning from '@material-ui/icons/Warning';
 
 const totalExpenses = getTotalExpense();
 
@@ -71,12 +76,15 @@ class chart extends Component{
         return (
             
             <div>
-            
-                <Link to={"/"}>
-                    <Button>
-                    <HomeButton/>
-                    </Button>
-                </Link>
+        <nav class="navbar navbar-default navbar-expand">
+            <Link to={"/"}>
+                <Button>
+                <HomeButton className="font_white"/>
+                </Button>
+            </Link>
+                <a><h3 className="si_1">통계</h3></a>
+            </nav>
+            <br></br>
                 <div className="chart">
                 <center>
                     <Pie
@@ -94,6 +102,33 @@ class chart extends Component{
                     }}
                 /></center>
               </div>
+              <nav class="navbar fixed-bottom navbar-default">
+          <Link to="/daily">
+              <Button>
+                <AttachMoney className="si_1"/>
+              </Button>
+          </Link>
+          <Link to={"/budget"}>
+            <Button>
+              <AccountBalanceWallet className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/expense" }>
+            <Button>
+              <DoneOutline className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/statistics"}>
+            <Button>
+              <Poll className="si_1"/>
+            </Button>
+          </Link>
+          <Link to={"/regret"}>
+            <Button>
+              <Warning className="si_1"/>
+            </Button>
+          </Link>
+      </nav>
             </div>
         )
     }
