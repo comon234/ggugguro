@@ -1,4 +1,5 @@
 import React from 'react'
+import { getCategories } from '../storage/categories';
 import { getPresentBudget} from '../storage/expense';
 import { lastDayOfMonth, getDate, getMonth } from 'date-fns';
 import Table from '@material-ui/core/Table';
