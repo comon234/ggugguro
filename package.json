@@ -21,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "react-scripts build && gh-pages -d build -r https://github.com/ggugguro.github.io -b master"
+    "deploy": "react-scripts build && gh-pages -d build -r https://github.com/ggugguro/ggugguro.github.io -b master"
   },
   "eslintConfig": {
     "extends": "react-app"
