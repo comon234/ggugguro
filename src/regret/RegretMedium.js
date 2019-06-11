@@ -55,31 +55,31 @@ export default function RegretMedium() {
         </tbody>
       </table>
       <nav class="navbar fixed-bottom navbar-default">
-      <Link to="/daily">
-          <Button>
-            <AttachMoney className="si_1"/>
-          </Button>
-      </Link>
-      <Link to={"/budget"}>
-        <Button>
-          <AccountBalanceWallet className="si_1"/>
-        </Button>
-      </Link>
-      <Link to={"/expense" }>
-        <Button>
-          <DoneOutline className="si_1"/>
-        </Button>
-      </Link>
-      <Link to={"/statistics"}>
-        <Button>
-          <Poll className="si_1"/>
-        </Button>
-      </Link>
-      <Link to={"/regret"}>
-        <Button>
-          <Warning className="si_1"/>
-        </Button>
-      </Link>
+          <Link to="/daily">
+              <Button>
+                <AttachMoney className="font_white"/>
+              </Button>
+          </Link>
+          <Link to={"/budget"}>
+            <Button>
+              <AccountBalanceWallet className="font_white"/>
+            </Button>
+          </Link>
+          <Link to={"/expense" }>
+            <Button>
+              <DoneOutline className="font_white"/>
+            </Button>
+          </Link>
+          <Link to={"/statistics"}>
+            <Button>
+              <Poll className="font_white"/>
+            </Button>
+          </Link>
+          <Link to={"/regret"}>
+            <Button>
+              <Warning className="font_white"/>
+            </Button>
+          </Link>
       </nav>
     </div>
   )

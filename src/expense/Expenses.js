@@ -21,6 +21,7 @@ import Poll from '@material-ui/icons/Poll';
 import Warning from '@material-ui/icons/Warning';
 
 
+
 const Expenses = () => {
   const [date, setDate] = useState(null);
 
@@ -42,7 +43,7 @@ const Expenses = () => {
           <HomeButton className="font_white"/>
         </Button>
       </Link>
-        <a><h3 className="si_1">지출 추가</h3></a>
+        <a><h3 className="reg_font">지출 추가</h3></a>
       </nav>
     <br></br>
       <DialogTitle id="form-dialog-title" align="center">지출 추가</DialogTitle>
@@ -60,67 +61,72 @@ const Expenses = () => {
           onClose={e => setDate(null)}
           aria-labelledby="form-dialog-title"
         >
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>카테고리 명</TableCell>
-              <TableCell>내용</TableCell>
-              <TableCell align="right">금액(원)</TableCell>
-              <TableCell align="right">날짜</TableCell>
-              <TableCell align="right">후회감</TableCell>
-              <TableCell align="right">삭제</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {getExpensesFromDate({date}).map(({category, content, amount, regret}, index) => {
-              return (
-                <TableRow key={index}>
-                  <TableCell component="th" scope="row">
-                    {category}
-                  </TableCell>
-                  <TableCell align="right">{content}</TableCell>
-                  <TableCell align="right">{amount}</TableCell>
-                  <TableCell align="right">{format(parse(date), "MM-DD")}</TableCell>
-                  <TableCell align="right">{regret || "0"}</TableCell>
-                  <TableCell align="right"><Button onClick={() => handleDelete({date, index})}>click</Button></TableCell>
-                </TableRow>
-              )
-            })}
-          </TableBody>
-        </Table>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col" className="table_font2">카테고리 명</th>
+            <th scope="col" className="table_font2">내용</th>
+            <th scope="col" className="table_font2">금액(원)</th>
+            <th scope="col" className="table_font2">날짜(일)</th>
+            <th scope="col" className="table_font2">후회감</th>
+            <th scope="col" className="table_font2">삭제</th>
+          </tr>
+        </thead>
+        <tbody>
+{getExpensesFromDate({date}).map(({category, content, amount, regret}, index) => {
+  return (
+            <tr key={index}>
+            <td className="cont_font2" component="th" scope="row">
+              {category}
+            </td>
+            <td className="cont_font2">{content}</td>
+            <td className="cont_font2">{amount}</td>
+            <td className="cont_font2">{format(parse(date), "MM-DD")}</td>
+            <td className="cont_font2">{regret || "0"}</td>
+            <td className="cont_font2"><button type="button" class="btn btn-default" className="click_btn" onClick={() => handleDelete({date, index})}>click</button></td>
+          </tr>
+  )
+
+})}
+        </tbody>
+      </table>
+
         <ExpenseForm
           date={date}
           setDate={setDate}
         />
 
-      </Dialog>
+      </Dialog> 
       <nav class="navbar fixed-bottom navbar-default">
-          <Link to="/daily">
-              <Button>
-                <AttachMoney className="si_1"/>
-              </Button>
-          </Link>
-          <Link to={"/budget"}>
-            <Button>
-              <AccountBalanceWallet className="si_1"/>
-            </Button>
-          </Link>
-          <Link to={"/expense" }>
-            <Button>
-              <DoneOutline className="si_1"/>
-            </Button>
-          </Link>
-          <Link to={"/statistics"}>
-            <Button>
-              <Poll className="si_1"/>
-            </Button>
-          </Link>
-          <Link to={"/regret"}>
-            <Button>
-              <Warning className="si_1"/>
-            </Button>
-          </Link>
+      <Link to="/daily">
+          <Button>
+            <AttachMoney className="font_white"/>
+          </Button>
+      </Link>
+      <Link to={"/budget"}>
+        <Button>
+          <AccountBalanceWallet className="font_white"/>
+        </Button>
+      </Link>
+      <Link to={"/expense" }>
+        <Button>
+          <DoneOutline className="font_white"/>
+        </Button>
+      </Link>
+      <Link to={"/statistics"}>
+        <Button>
+          <Poll className="font_white"/>
+        </Button>
+      </Link>
+      <Link to={"/regret"}>
+        <Button>
+          <Warning className="font_white"/>
+        </Button>
+      </Link>
       </nav>
+
+
       {/*<Fab*/}
       {/*  color="primary"*/}
       {/*  aria-label="Add" */}
