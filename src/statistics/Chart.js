@@ -82,7 +82,7 @@ class chart extends Component{
                 <HomeButton className="font_white"/>
                 </Button>
             </Link>
-                <a><h3 className="si_1">통계</h3></a>
+                <a><h3 className="reg_font">통계</h3></a>
             </nav>
             <br></br>
                 <div className="chart">
@@ -105,27 +105,27 @@ class chart extends Component{
               <nav class="navbar fixed-bottom navbar-default">
           <Link to="/daily">
               <Button>
-                <AttachMoney className="si_1"/>
+                <AttachMoney className="font_white"/>
               </Button>
           </Link>
           <Link to={"/budget"}>
             <Button>
-              <AccountBalanceWallet className="si_1"/>
+              <AccountBalanceWallet className="font_white"/>
             </Button>
           </Link>
           <Link to={"/expense" }>
             <Button>
-              <DoneOutline className="si_1"/>
+              <DoneOutline className="font_white"/>
             </Button>
           </Link>
           <Link to={"/statistics"}>
             <Button>
-              <Poll className="si_1"/>
+              <Poll className="font_white"/>
             </Button>
           </Link>
           <Link to={"/regret"}>
             <Button>
-              <Warning className="si_1"/>
+              <Warning className="font_white"/>
             </Button>
           </Link>
       </nav>

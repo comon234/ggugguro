@@ -4,6 +4,7 @@ body{
    .App {
      position: relative;
    }
+
    .bot_right{
      bottom : 5em;
      padding-right: 20%;
@@ -28,6 +29,9 @@ body{
     color:white;
 
    }
+   .click_btn{
+     font-size: 1em;
+   }
    .back_col{
     background-color: #5fad46;
    }
@@ -49,6 +53,10 @@ body{
    .font_white{
        color: white;
    }
+   .font_btn{
+    color: black;
+    font-size: 0.5em;
+}
   .navbar-nav{
       text-align: center;
       float:none;
@@ -57,9 +65,9 @@ body{
      color:white;
      text-align: center;
      align-content: center;
-     padding-top: 20%;
+     padding: 10%;
      font-family: 'Gothic A1', sans-serif;
-     font-size :1.3em;
+     font-size :0.8em;
                }
    .budget{
      padding-left: 10%;
@@ -100,7 +108,7 @@ body{
     align-content: center;
     padding-top: 5%;
     font-family: 'Gothic A1', sans-serif;
-    font-size : 1.3em;
+    font-size : 1.1em;
          }
    .little_font{
      font-size : 5em;
@@ -120,6 +128,19 @@ body{
     font-family: 'Gothic A1', sans-serif;
    color: black;
   }
+  .table_font2{
+    font-size : 0.5em;
+    text-align: center;
+    font-family: 'Gothic A1', sans-serif;
+    color: black;
+  }
+    .cont_font2{
+    font-size : 0.5em;
+    text-align: center;
+    font-family: 'Gothic A1', sans-serif;
+   color: black;
+  }
+
   .table2_font{
     font-size : 1em;
     text-align: center;

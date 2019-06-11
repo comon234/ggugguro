@@ -33,9 +33,11 @@ export default function BudgetForm() {
           <HomeButton className="font_white"/>
         </Button>
       </Link>
-        <a><h3 className="si_1">예산 설정</h3></a>
+        <a><h3 className="reg_font">예산 설정</h3></a>
       </nav>
+      
     <br></br>
+    
      <h3 className="pad_left">
         {getMonth(budgetDate)+1}월 예산
       </h3>
@@ -85,27 +87,27 @@ export default function BudgetForm() {
       <nav class="navbar fixed-bottom navbar-default">
           <Link to="/daily">
               <Button>
-                <AttachMoney className="si_1"/>
+                <AttachMoney className="font_white"/>
               </Button>
           </Link>
           <Link to={"/budget"}>
             <Button>
-              <AccountBalanceWallet className="si_1"/>
+              <AccountBalanceWallet className="font_white"/>
             </Button>
           </Link>
           <Link to={"/expense" }>
             <Button>
-              <DoneOutline className="si_1"/>
+              <DoneOutline className="font_white"/>
             </Button>
           </Link>
           <Link to={"/statistics"}>
             <Button>
-              <Poll className="si_1"/>
+              <Poll className="font_white"/>
             </Button>
           </Link>
           <Link to={"/regret"}>
             <Button>
-              <Warning className="si_1"/>
+              <Warning className="font_white"/>
             </Button>
           </Link>
       </nav>

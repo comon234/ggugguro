@@ -33,7 +33,7 @@ export default function DailyBudget() {
           <HomeButton className="font_white"/>
         </Button>
       </Link>
-        <a><h3 className="si_1">오늘의 예산</h3></a>
+        <a><h3 className="reg_font">오늘의 예산</h3></a>
       </nav>
     <br></br>
           <h1 className="cent_font"> {getMonth(dailyDate)+1}월 {getDate(dailyDate)}일</h1>
@@ -58,27 +58,27 @@ export default function DailyBudget() {
       <nav class="navbar fixed-bottom navbar-default">
           <Link to="/daily">
               <Button>
-                <AttachMoney className="si_1"/>
+                <AttachMoney className="font_white"/>
               </Button>
           </Link>
           <Link to={"/budget"}>
             <Button>
-              <AccountBalanceWallet className="si_1"/>
+              <AccountBalanceWallet className="font_white"/>
             </Button>
           </Link>
           <Link to={"/expense" }>
             <Button>
-              <DoneOutline className="si_1"/>
+              <DoneOutline className="font_white"/>
             </Button>
           </Link>
           <Link to={"/statistics"}>
             <Button>
-              <Poll className="si_1"/>
+              <Poll className="font_white"/>
             </Button>
           </Link>
           <Link to={"/regret"}>
             <Button>
-              <Warning className="si_1"/>
+              <Warning className="font_white"/>
             </Button>
           </Link>
       </nav>

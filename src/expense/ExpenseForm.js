@@ -56,7 +56,7 @@ const ExpenseForm = ({
           type="number"
           value={amount}
           onChange={e => setAmount(e.target.value *1)}
-          style={{width: "50%"}}
+          style={{width: "20%"}}
         />
          <TextField
           autoFocus
@@ -64,11 +64,12 @@ const ExpenseForm = ({
           type="string"
           value={content}
           onChange={e => setContent(e.target.value)}
-          style={{width: "50%"}}
+          style={{width: "40%"}}
         />
         <Select
           onChange={e => setCategory(e.target.value)}
           value={category || ''}
+          style={{width: "20%"}}
         >
           {categories.map(({category}, i) => (
             <MenuItem key={i} value={category}>{category}</MenuItem>
@@ -76,6 +77,7 @@ const ExpenseForm = ({
         </Select>
         <Select
           onChange={e => setRegret(e.target.value)}
+          style={{width: "20%"}}
           value={`${regret}`}
         >
           {
